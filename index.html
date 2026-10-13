@@ -2,282 +2,69 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<!-- viewport-fit=cover is required for iPhone 15 Dynamic Island / notch support -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0D1117">
 <meta name="color-scheme" content="dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<!-- ตั้งชื่อแอปเมื่อกด Add to Home Screen -->
 <meta name="apple-mobile-web-app-title" content="Koommai">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-<!-- ไอคอนหน้าจอโฮม (สามารถใส่ URL รูปภาพ หรือไอคอนขนาด 180x180 px) -->
 <link rel="apple-touch-icon" href="Koom_mai_logo.png">
-
-
 <title>Koommai คุ้มมั้ย — เปรียบเทียบราคาต่อหน่วย</title>
 <style>
   :root {
-    --bg: #0D1117;
-    --panel: #161B22;
-    --panel2: #1C2128;
-    --line: #30363D;
-    --fg: #E6EDF3;
-    --muted: #8B949E;
-    --green: #2EA043;
-    --green-accent: #39FF14;
-    --red: #F85149;
-    --amber: #E3B341;
-    --radius: 12px;
+    --bg: #0D1117; --panel: #161B22; --panel2: #1C2128;
+    --line: #30363D; --fg: #E6EDF3; --muted: #8B949E;
+    --green: #2EA043; --green-accent: #39FF14; --red: #F85149;
+    --amber: #E3B341; --radius: 12px;
   }
-
-  * {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-  }
-
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html, body {
-    margin: 0;
-    padding: 0;
-    background: var(--bg);
-    color: var(--fg);
+    margin: 0; padding: 0; background: var(--bg); color: var(--fg);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Sarabun", "Noto Sans Thai", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
   }
-
-  /* Support iPhone 15 Dynamic Island & Home Indicator safe areas */
   .wrap {
-    max-width: 580px;
-    margin: 0 auto;
+    max-width: 580px; margin: 0 auto;
     padding-top: max(20px, env(safe-area-inset-top));
     padding-left: max(16px, env(safe-area-inset-left));
     padding-right: max(16px, env(safe-area-inset-right));
     padding-bottom: max(60px, env(safe-area-inset-bottom));
   }
-
-  header {
-    margin-bottom: 20px;
-  }
-
-  h1 {
-    font-size: 24px;
-    font-weight: 800;
-    margin: 0 0 6px;
-    letter-spacing: -0.4px;
-  }
-
-  .sub {
-    color: var(--muted);
-    font-size: 13px;
-    margin: 0;
-    line-height: 1.5;
-  }
-
-  .item {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 14px;
-    margin-bottom: 14px;
-  }
-
-  .head {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 12px;
-  }
-
-  .idx {
-    background: var(--panel2);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 13px;
-    flex-shrink: 0;
-  }
-
-  /* Crucial iOS fix: Font-size must be at least 16px to prevent viewport zoom */
-  input, select {
-    width: 100%;
-    background: var(--panel2);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    color: var(--fg);
-    padding: 11px 12px;
-    font-size: 16px;
-    line-height: 1.3;
-    transition: border-color 0.2s ease;
-  }
-
-  input:focus, select:focus {
-    outline: none;
-    border-color: var(--green-accent);
-  }
-
-  /* Native Custom Select Chevron for iOS & Android */
-  select {
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%238B949E%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 10px;
-    padding-right: 32px;
-  }
-
-  input[type=number]::-webkit-outer-spin-button,
-  input[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  input[type=number] {
-    -moz-appearance: textfield;
-  }
-
-  .row {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 10px;
-  }
+  header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; gap: 12px; }
+  h1 { font-size: 22px; font-weight: 800; margin: 0 0 4px; }
+  .sub { color: var(--muted); font-size: 13px; margin: 0; }
+  .fx-widget { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 6px; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
+  .fx-switch { display: flex; background: var(--panel2); border-radius: 8px; padding: 2px; gap: 2px; }
+  .fx-btn { border: none; background: transparent; color: var(--muted); font-size: 12px; font-weight: 700; padding: 6px 10px; border-radius: 6px; cursor: pointer; }
+  .fx-btn.active { background: var(--green-accent); color: #0D1117; }
+  .fx-rate-sub { font-size: 10px; color: var(--muted); padding-right: 4px; }
+  .item { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; margin-bottom: 14px; }
+  .head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .idx { background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; flex-shrink: 0; }
+  input, select { width: 100%; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; color: var(--fg); padding: 11px 12px; font-size: 16px; }
+  input:focus, select:focus { outline: none; border-color: var(--green-accent); }
+  select { appearance: none; -webkit-appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%238B949E%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 12px center; background-size: 10px; padding-right: 32px; }
+  input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  input[type=number] { -moz-appearance: textfield; }
+  .row { display: flex; gap: 8px; margin-bottom: 10px; }
   .row > * { flex: 1; min-width: 0; }
-
-  label {
-    display: block;
-    font-size: 11px;
-    color: var(--muted);
-    margin: 0 0 5px;
-    font-weight: 500;
-  }
-
-  /* Compliant 44px min tap-target for iOS Human Interface Guidelines */
-  .del {
-    min-width: 44px;
-    min-height: 44px;
-    background: transparent;
-    border: none;
-    color: var(--muted);
-    font-size: 18px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    touch-action: manipulation;
-  }
-  .del:active {
-    color: var(--red);
-    background: rgba(248, 81, 73, 0.1);
-  }
-
-  .actions {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin: 16px 0;
-  }
-
-  .btn {
-    border-radius: var(--radius);
-    padding: 14px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    touch-action: manipulation;
-    border: 1px solid transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
+  label { display: block; font-size: 11px; color: var(--muted); margin: 0 0 5px; font-weight: 500; }
+  .del { min-width: 44px; min-height: 44px; background: transparent; border: none; color: var(--muted); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; border-radius: 8px; }
+  .del:active { color: var(--red); background: rgba(248, 81, 73, 0.1); }
+  .actions { display: grid; grid-template-columns: 1fr; gap: 10px; margin: 16px 0; }
+  .btn { border-radius: var(--radius); padding: 14px; font-size: 16px; font-weight: 600; cursor: pointer; border: 1px solid transparent; display: flex; align-items: center; justify-content: center; }
   .btn:active { transform: scale(0.98); }
-
-  .btn-add {
-    background: var(--panel);
-    border-color: var(--line);
-    color: var(--fg);
-  }
-
-  .btn-go {
-    background: var(--green-accent);
-    color: #0D1117;
-    font-size: 17px;
-    font-weight: 700;
-  }
-
-  #results {
-    margin-top: 24px;
-    display: none;
-  }
-
-  .res {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 16px;
-    margin-bottom: 12px;
-    position: relative;
-  }
-
-  .res.best {
-    border-color: var(--green-accent);
-    box-shadow: 0 0 0 1px var(--green-accent) inset;
-  }
-
-  .res .name {
-    font-weight: 700;
-    font-size: 16px;
-    margin-bottom: 4px;
-    padding-right: 90px;
-    word-break: break-word;
-  }
-
-  .res .unit {
-    font-size: 22px;
-    font-weight: 800;
-    margin: 6px 0;
-  }
+  .btn-add { background: var(--panel); border-color: var(--line); color: var(--fg); }
+  .btn-go { background: var(--green-accent); color: #0D1117; font-size: 17px; font-weight: 700; }
+  #results { margin-top: 24px; display: none; }
+  .res { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; position: relative; }
+  .res.best { border-color: var(--green-accent); box-shadow: 0 0 0 1px var(--green-accent) inset; }
+  .res .name { font-weight: 700; font-size: 16px; margin-bottom: 4px; padding-right: 90px; }
+  .res .unit { font-size: 22px; font-weight: 800; margin: 6px 0; }
   .res.best .unit { color: var(--green-accent); }
-
-  .res .meta {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  .badge {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    font-size: 11px;
-    font-weight: 700;
-    background: var(--green-accent);
-    color: #0D1117;
-    padding: 4px 8px;
-    border-radius: 12px;
-  }
-
-  .badge.lose {
-    background: var(--panel2);
-    color: var(--red);
-    border: 1px solid var(--red);
-  }
-
-  .note, .warn {
-    border-radius: var(--radius);
-    padding: 14px;
-    font-size: 13px;
-    line-height: 1.5;
-    margin-bottom: 14px;
-  }
+  .res .meta { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .badge { position: absolute; top: 14px; right: 14px; font-size: 11px; font-weight: 700; background: var(--green-accent); color: #0D1117; padding: 4px 8px; border-radius: 12px; }
+  .badge.lose { background: var(--panel2); color: var(--red); border: 1px solid var(--red); }
+  .note, .warn { border-radius: var(--radius); padding: 14px; font-size: 13px; line-height: 1.5; margin-bottom: 14px; }
   .note { background: var(--panel2); border: 1px solid var(--amber); }
   .note b { color: var(--amber); }
   .warn { background: var(--panel2); border: 1px solid var(--red); }
@@ -286,9 +73,18 @@
 <body>
 <div class="wrap">
   <header>
-    <h1>Koom-mai คุ้มมั้ย 💸</h1>
-    <p class="sub">เปรียบเทียบราคาต่อหน่วย (บาท/กรัม · บาท/มล. · บาท/ชิ้น)<br>
-    คำนวณโปรโมชัน, แถมฟรี, และส่วนลด %</p>
+    <div>
+      <h1>Koommai คุ้มมั้ย 💸</h1>
+      <p class="sub">เปรียบเทียบราคาต่อหน่วย คำนวณส่วนลด & โปรโมชัน</p>
+    </div>
+    <div class="fx-widget">
+      <div class="fx-switch" id="fxSwitch">
+        <button type="button" class="fx-btn active" data-cur="THB">THB</button>
+        <button type="button" class="fx-btn" data-cur="AUD">AUD</button>
+        <button type="button" class="fx-btn" data-cur="USD">USD</button>
+      </div>
+      <div class="fx-rate-sub" id="fxRateLabel">1 AUD ≈ -- THB</div>
+    </div>
   </header>
 
   <div id="items"></div>
@@ -301,238 +97,7 @@
   <div id="results"></div>
 </div>
 
-<script>
-"use strict";
-
-const UNITS = {
-  g:    { dim: 'weight', factor: 1,     th: 'กรัม',     en: 'g' },
-  kg:   { dim: 'weight', factor: 1000,  th: 'กิโลกรัม', en: 'kg' },
-  mg:   { dim: 'weight', factor: 0.001, th: 'มิลลิกรัม', en: 'mg' },
-  ml:   { dim: 'volume', factor: 1,     th: 'มิลลิลิตร', en: 'ml' },
-  cl:   { dim: 'volume', factor: 10,    th: 'เซนติลิตร', en: 'cl' },
-  l:    { dim: 'volume', factor: 1000,  th: 'ลิตร',     en: 'L' },
-  pcs:  { dim: 'count',  factor: 1,     th: 'ชิ้น',     en: 'pcs' },
-  sheet:{ dim: 'count',  factor: 1,     th: 'แผ่น',     en: 'sheet' },
-  tab:  { dim: 'count',  factor: 1,     th: 'เม็ด',     en: 'tab' },
-  roll: { dim: 'count',  factor: 1,     th: 'ม้วน',     en: 'roll' },
-  pair: { dim: 'count',  factor: 2,     th: 'คู่',      en: 'pair' },
-  dozen:{ dim: 'count',  factor: 12,    th: 'โหล',      en: 'dozen' }
-};
-
-const DIM_LABEL = { weight: 'บาท/กรัม', volume: 'บาท/มล.', count: 'บาท/ชิ้น' };
-const DIM_TH    = { weight: 'น้ำหนัก', volume: 'ปริมาตร', count: 'จำนวน' };
-const BASE_UNIT = { weight: 'กรัม', volume: 'มล.', count: 'ชิ้น' };
-
-// Utility: Normalize localized numbers (supports decimal comma on iOS)
-function cleanNumber(val) {
-  if (typeof val === 'number') return val;
-  if (!val) return NaN;
-  return Number(String(val).replace(/,/g, '.').trim());
-}
-
-// XSS Prevention sanitizer
-function escapeHTML(str) {
-  return String(str).replace(/[&<>'"]/g, tag => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
-  }[tag] || tag));
-}
-
-function analyze(item) {
-  const u = UNITS[item.unit];
-  if (!u) return { ok: false, err: 'หน่วยไม่ถูกต้อง: ' + item.unit };
-
-  const size   = cleanNumber(item.size);
-  const pieces = cleanNumber(item.pieces || 1);
-  const disc   = cleanNumber(item.discount || 0);
-  const price  = cleanNumber(item.price);
-
-  if (isNaN(size) || size <= 0) return { ok: false, err: 'กรุณาระบุขนาดให้ถูกต้อง (> 0)' };
-  if (isNaN(pieces) || pieces <= 0) return { ok: false, err: 'จำนวนต้องมากกว่า 0' };
-  if (isNaN(price) || price <= 0) return { ok: false, err: 'ราคาต้องมากกว่า 0' };
-  if (isNaN(disc) || disc < 0 || disc > 100) return { ok: false, err: 'ส่วนลดต้องอยู่ระหว่าง 0–100%' };
-
-  const baseQty = size * u.factor * pieces;
-  const effPrice = price * (1 - (disc / 100));
-
-  return {
-    ok: true,
-    dim: u.dim,
-    baseQty,
-    effPrice,
-    unitPrice: effPrice / baseQty,
-    unit: u,
-    size,
-    pieces,
-    discount: disc
-  };
-}
-
-function compare(items) {
-  if (!items.length) return { ok: false, err: 'ยังไม่มีรายการสินค้า' };
-
-  const analyzed = items.map((it, idx) => ({
-    i: idx,
-    name: it.name || `สินค้า ${idx + 1}`,
-    ...analyze(it)
-  }));
-
-  const failed = analyzed.find(item => !item.ok);
-  if (failed) return { ok: false, err: `${failed.name}: ${failed.err}` };
-
-  const dims = new Set(analyzed.map(o => o.dim));
-  if (dims.size > 1) {
-    const dimList = [...dims].map(d => DIM_TH[d]).join(', ');
-    return {
-      ok: false,
-      err: `เปรียบเทียบข้ามหมวดหมู่ไม่ได้ (${dimList}) โปรดเลือกหน่วยที่เป็นประเภทเดียวกัน`
-    };
-  }
-
-  const sorted = [...analyzed].sort((a, b) => a.unitPrice - b.unitPrice);
-  const bestUnitPrice = sorted[0].unitPrice;
-
-  sorted.forEach((item, rank) => {
-    item.rank = rank + 1;
-    item.pctWorse = bestUnitPrice > 0 ? ((item.unitPrice / bestUnitPrice) - 1) * 100 : 0;
-    item.wasteTol = (rank === 0 && sorted[1]) 
-      ? (1 - (sorted[0].unitPrice / sorted[1].unitPrice)) * 100 
-      : null;
-  });
-
-  return { ok: true, results: sorted, dim: sorted[0].dim };
-}
-
-// UI Management
-const itemsContainer = document.getElementById('items');
-
-function renderUnitOptions(selectedKey = 'g') {
-  return Object.entries(UNITS).map(([k, v]) =>
-    `<option value="${k}" ${k === selectedKey ? 'selected' : ''}>${v.th} (${v.en})</option>`
-  ).join('');
-}
-
-function addItem(pre = {}) {
-  const itemDiv = document.createElement('div');
-  itemDiv.className = 'item';
-  itemDiv.innerHTML = `
-    <div class="head">
-      <span class="idx"></span>
-      <input type="text" class="name" placeholder="ชื่อสินค้า (ไม่บังคับ)" value="${escapeHTML(pre.name || '')}">
-      <button type="button" class="del" aria-label="ลบรายการ">✕</button>
-    </div>
-    <div class="row">
-      <div>
-        <label>ขนาด / ปริมาณ</label>
-        <input type="number" class="size" inputmode="decimal" step="any" placeholder="300" value="${pre.size ?? ''}">
-      </div>
-      <div style="flex:0 0 44%">
-        <label>หน่วย</label>
-        <select class="unit">${renderUnitOptions(pre.unit || 'g')}</select>
-      </div>
-    </div>
-    <div class="row">
-      <div>
-        <label>จำนวนรวม (รวมของแถม)</label>
-        <input type="number" class="pieces" inputmode="numeric" step="any" placeholder="1" value="${pre.pieces ?? '1'}">
-      </div>
-      <div>
-        <label>ส่วนลด (%)</label>
-        <input type="number" class="discount" inputmode="decimal" step="any" placeholder="0" value="${pre.discount ?? '0'}">
-      </div>
-    </div>
-    <div>
-      <label>ราคารวมสุทธิ (บาท)</label>
-      <input type="number" class="price" inputmode="decimal" step="any" placeholder="10" value="${pre.price ?? ''}">
-    </div>
-  `;
-
-  itemDiv.querySelector('.del').addEventListener('click', () => {
-    itemDiv.remove();
-    renumber();
-  });
-
-  itemsContainer.appendChild(itemDiv);
-  renumber();
-}
-
-function renumber() {
-  itemsContainer.querySelectorAll('.item').forEach((el, idx) => {
-    el.querySelector('.idx').textContent = idx + 1;
-  });
-}
-
-function collectData() {
-  return [...itemsContainer.querySelectorAll('.item')].map(el => ({
-    name: el.querySelector('.name').value.trim(),
-    size: el.querySelector('.size').value,
-    unit: el.querySelector('.unit').value,
-    pieces: el.querySelector('.pieces').value,
-    discount: el.querySelector('.discount').value,
-    price: el.querySelector('.price').value
-  }));
-}
-
-function formatNumber(n) {
-  if (!isFinite(n)) return '—';
-  if (n === 0) return '0';
-  const abs = Math.abs(n);
-  if (abs >= 1000) return n.toLocaleString('th-TH', { maximumFractionDigits: 1 });
-  if (abs >= 10) return n.toFixed(2).replace(/\.?0+$/, '');
-  if (abs >= 1) return n.toFixed(3).replace(/\.?0+$/, '');
-  return n.toFixed(4).replace(/\.?0+$/, '');
-}
-
-document.getElementById('addBtn').addEventListener('click', () => addItem());
-
-document.getElementById('goBtn').addEventListener('click', () => {
-  const result = compare(collectData());
-  const out = document.getElementById('results');
-  out.style.display = 'block';
-
-  if (!result.ok) {
-    out.innerHTML = `<div class="warn">⚠️ ${escapeHTML(result.err)}</div>`;
-    out.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    return;
-  }
-
-  const dimLabel = DIM_LABEL[result.dim];
-  let html = '';
-
-  result.results.forEach((item) => {
-    const isBest = item.rank === 1;
-    html += `
-      <div class="res ${isBest ? 'best' : ''}">
-        ${isBest 
-          ? `<span class="badge">คุ้มสุด 🏆</span>` 
-          : `<span class="badge lose">+${formatNumber(item.pctWorse)}%</span>`
-        }
-        <div class="name">${escapeHTML(item.name)}</div>
-        <div class="unit">${formatNumber(item.unitPrice)} <span style="font-size:14px;font-weight:400;color:var(--muted)">${dimLabel}</span></div>
-        <div class="meta">
-          ${formatNumber(item.size)} ${item.unit.th} × ${item.pieces} ชิ้น = ${formatNumber(item.baseQty)} ${BASE_UNIT[result.dim]}
-          ${item.discount > 0 ? `· ลด ${formatNumber(item.discount)}%` : ''} 
-          (จ่ายรวม ${formatNumber(item.effPrice)} บ.)
-        </div>
-      </div>
-    `;
-  });
-
-  const bestItem = result.results[0];
-  if (bestItem.wasteTol && bestItem.wasteTol > 0) {
-    html = `
-      <div class="note">
-        💡 <b>${escapeHTML(bestItem.name)}</b> ให้ราคาเฉลี่ยดีที่สุด ต่อให้บริโภคไม่หมดแล้วต้อง <b>ทิ้งไปถึง ${formatNumber(bestItem.wasteTol)}%</b> ต้นทุนก็ยังถูกกว่า <b>${escapeHTML(result.results[1].name)}</b>
-      </div>
-    ` + html;
-  }
-
-  out.innerHTML = html;
-  out.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-});
-
-// Initial demo datasets
-addItem({ name: 'สินค้า A', size: 300, unit: 'g', pieces: 1, discount: 0, price: 10 });
-addItem({ name: 'สินค้า B', size: 500, unit: 'g', pieces: 1, discount: 0, price: 12 });
-</script>
+<!-- Load Main App as ES Module -->
+<script type="module" src="app.js"></script>
 </body>
 </html>
